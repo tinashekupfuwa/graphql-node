@@ -5,11 +5,9 @@ const { Query } = require("./resolvers/Query");
 const { Category } = require("./resolvers/Category");
 const { Product } = require("./resolvers/Product");
 const { Mutation } = require("./resolvers/Mutation");
-const { categories, products, reviews } = require("./db");
+const { db } = require("./db"); //importing db, exported from db.js
 const app = express();
 const PORT = 4000;
-
-//Scalar types :String,Int,Float,Boolean
 
 const server = new ApolloServer({
   /*remember the formatting is typeDefs,resolvers:{},context:{} */
@@ -21,12 +19,8 @@ const server = new ApolloServer({
     Product,
   },
   context: {
-    /*:context in the (parent,args,context) is used for db storage
-      we use context when we do not want to import variables or db in each and every one of our resolvers.
-     */
-    categories,
-    products,
-    reviews,
+    db,
+    //context now contains a whole database.
   },
 });
 
