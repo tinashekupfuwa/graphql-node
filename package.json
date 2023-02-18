@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "faker": "^6.6.6",
+    "mocker-data-generator": "^3.0.1"
+  }
+}
